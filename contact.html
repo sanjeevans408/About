@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Me</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <style>
+    body {
+      min-height: 100vh;
+      margin: 0;
+      background: linear-gradient(120deg, #ff6a00, #ee0979, #00c3ff, #43e97b, #ff6a00 90%);
+      background-size: 400% 400%;
+      animation: bgMove 12s linear infinite;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    @keyframes bgMove {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+    .contact-container {
+      background: #fff;
+      border-radius: 24px;
+      box-shadow: 0 8px 40px rgba(31, 38, 135, 0.18);
+      padding: 2.5rem 2.2rem 2rem 2.2rem;
+      text-align: center;
+      min-width: 320px;
+      max-width: 370px;
+      animation: fadeIn 1.2s cubic-bezier(.68,-0.55,.27,1.55);
+      position: relative;
+      overflow: hidden;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(40px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    .contact-title {
+      font-size: 2.1rem;
+      font-weight: 800;
+      margin-bottom: 0.7rem;
+      background: linear-gradient(90deg, #ff6a00, #ee0979, #00c3ff, #43e97b, #ff6a00);
+      background-size: 400% 400%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: rainbowText 3s linear infinite;
+      letter-spacing: 2px;
+    }
+    @keyframes rainbowText {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .contact-desc {
+      color: #444;
+      font-size: 1.08rem;
+      margin-bottom: 1.7rem;
+    }
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      align-items: center;
+    }
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      min-width: 220px;
+      padding: 0.85rem 1.2rem;
+      border-radius: 14px;
+      font-size: 1.13rem;
+      font-weight: 600;
+      color: #fff;
+      background: linear-gradient(90deg, #ff6a00, #ee0979, #00c3ff, #43e97b, #ff6a00);
+      background-size: 400% 400%;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+      border: none;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.3s, background 0.5s;
+      outline: none;
+      z-index: 1;
+      animation: rainbowText 5s linear infinite;
+    }
+    .contact-link i {
+      font-size: 1.5em;
+      transition: transform 0.3s;
+    }
+    .contact-link:hover {
+      transform: scale(1.07) rotate(-2deg);
+      box-shadow: 0 8px 32px #00c3ff55, 0 0 0 8px #fff2;
+      background-position: 100% 0;
+    }
+    .contact-link:active i {
+      transform: scale(0.9);
+    }
+    /* Ripple effect */
+    .ripple {
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      background: rgba(255,255,255,0.4);
+      border-radius: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      animation: ripple-anim 0.6s linear;
+      pointer-events: none;
+      z-index: 1;
+    }
+    @keyframes ripple-anim {
+      to {
+        transform: translate(-50%, -50%) scale(1.5);
+        opacity: 0;
+      }
+    }
+    /* Tablet and small desktop adjustments */
+    @media (max-width: 900px) {
+      .contact-container {
+        padding: 1.2rem 0.7rem 1.2rem 0.7rem;
+        border-radius: 16px;
+        min-width: 0;
+        max-width: 98vw;
+      }
+      .contact-title {
+        font-size: 1.5rem;
+      }
+    }
+    /* Mobile adjustments */
+    @media (max-width: 600px) {
+      .contact-container {
+        padding: 0.7rem 0.1rem 0.7rem 0.1rem;
+        border-radius: 10px;
+        min-width: 0;
+        max-width: 100vw;
+      }
+      .contact-title {
+        font-size: 1.1rem;
+        letter-spacing: 1px;
+      }
+      .contact-desc {
+        font-size: 0.97rem;
+        margin-bottom: 1.1rem;
+      }
+      .contact-link {
+        min-width: 0;
+        width: 98vw;
+        font-size: 0.98rem;
+        padding: 0.6rem 0.3rem;
+        border-radius: 8px;
+      }
+      .contact-link i {
+        font-size: 1em;
+      }
+      .contact-links {
+        gap: 0.7rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="contact-container">
+    <div class="contact-title">Contact Me</div>
+    <div class="contact-desc">
+      Feel free to reach out via your favorite platform!
+    </div>
+    <div class="contact-links">
+      <a class="contact-link" href="mailto:your@email.com" target="_blank">
+        <i class="fas fa-envelope"></i> Email
+      </a>
+      <a class="contact-link" href="https://wa.me/919999999999" target="_blank">
+        <i class="fab fa-whatsapp"></i> WhatsApp
+      </a>
+      <a class="contact-link" href="https://t.me/yourtelegram" target="_blank">
+        <i class="fab fa-telegram-plane"></i> Telegram
+      </a>
+      <a class="contact-link" href="https://instagram.com/yourprofile" target="_blank">
+        <i class="fab fa-instagram"></i> Instagram
+      </a>
+    </div>
+  </div>
+  <script>
+    // Ripple effect for contact links
+    document.querySelectorAll('.contact-link').forEach(link => {
+      link.addEventListener('click', function(e) {
+        let ripple = document.createElement('span');
+        ripple.className = 'ripple';
+        ripple.style.left = e.offsetX + 'px';
+        ripple.style.top = e.offsetY + 'px';
+        this.appendChild(ripple);
+        setTimeout(() => ripple.remove(), 600);
+      });
+    });
+  </script>
+</body>
+</html>
