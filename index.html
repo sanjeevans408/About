@@ -154,211 +154,1094 @@
       max-height: 300px;
       opacity: 1;
       padding: 1rem;
-      animation: fadeSlideIn 0.7s;
-    }
-    @keyframes fadeSlideIn {
-      from { opacity: 0; transform: translateY(-20px);}
-      to { opacity: 1; transform: translateY(0);}
-    }
-    .features-content ul {
-      margin: 0;
-      padding-left: 1.2em;
-    }
-    .features-content li {
-      margin-bottom: 0.5em;
-      color: #ee0979;
-      font-size: 1.08rem;
-      font-weight: 600;
-      position: relative;
-      animation: featureFadeIn 0.7s;
-      background: linear-gradient(90deg, #ff6a00, #00c3ff, #43e97b, #ee0979, #ff6a00);
-      background-size: 400% 400%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: featureFadeIn 0.7s, rainbowText 5s linear infinite;
-    }
-    @keyframes featureFadeIn {
-      from { opacity: 0; left: -20px;}
-      to { opacity: 1; left: 0;}
-    }
-
-    /* Social Links Animation */
-    .social-links {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      margin-top: 1.2rem;
-    }
-    .social-link {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background: #f0f0f0;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-      font-size: 2rem;
-      color: #888;
-      transition: 
-        transform 0.3s cubic-bezier(.68,-0.55,.27,1.55),
-        box-shadow 0.3s,
-        background 0.6s cubic-bezier(.68,-0.55,.27,1.55),
-        color 0.3s;
-      position: relative;
-      overflow: hidden;
-    }
-    .social-link:hover {
-      transform: scale(1.18) rotate(-8deg);
-      box-shadow: 0 8px 32px #00c3ff55, 0 0 0 8px #fff2;
-      color: #fff;
-      background: linear-gradient(270deg, #ff6a00, #ee0979, #00c3ff, #43e97b, #ff6a00);
-      background-size: 1200% 1200%;
-      animation: gradientMove 2s ease infinite;
-    }
-    @keyframes gradientMove {
-      0% {background-position: 0% 50%;}
-      50% {background-position: 100% 50%;}
-      100% {background-position: 0% 50%;}
-    }
-
-    /* Ripple Effect for Social Links */
-    .ripple {
-      position: absolute;
-      width: 120px;
-      height: 120px;
-      background: rgba(255,255,255,0.4);
-      border-radius: 50%;
-      transform: translate(-50%, -50%) scale(0);
-      animation: ripple-anim 0.6s linear;
-      pointer-events: none;
-      z-index: 1;
-    }
-    @keyframes ripple-anim {
-      to {
-        transform: translate(-50%, -50%) scale(1.5);
-        opacity: 0;
-      }
-    }
-
-    /* Responsive Styles */
-    @media (max-width: 900px) {
-      .about-container {
-        padding: 1.5rem 1.2rem;
-        border-radius: 18px;
-      }
-      .app-details,
-      .features-tab {
-        max-width: 98vw;
-        padding-left: 1rem;
-        padding-right: 1rem;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .about-container {
-        padding: 1rem 0.3rem;
-        border-radius: 12px;
-        min-width: 0;
-      }
-      .about-title {
-        font-size: 1.5rem;
-        letter-spacing: 1px;
-      }
-      .about-desc {
-        font-size: 1rem;
-      }
-      .app-details {
-        font-size: 0.98rem;
-        padding: 0.8rem 0.7rem;
-        border-radius: 10px;
-      }
-      .features-tab {
-        border-radius: 10px;
-        max-width: 100vw;
-        box-shadow: 0 1px 6px rgba(0,195,255,0.08);
-      }
-      .features-toggle {
-        font-size: 1rem;
-        padding: 0.7rem 0.7rem;
-        border-radius: 10px 10px 0 0;
-      }
-      .features-content {
-        padding: 0 0.5rem;
-      }
-      .social-links {
-        gap: 1rem;
-        margin-top: 0.7rem;
-      }
-      .social-link {
-        width: 44px;
-        height: 44px;
-        font-size: 1.3rem;
-      }
-    }
-  </style>
+      animation<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Tools - Universal Utility Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode/1.5.3/qrcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        primaryHover: '#4F4ECD'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .tool-section { display: none; }
+        .tool-section.active { display: block; }
+        .nav-item.active { @apply bg-primary text-white; }
+    </style>
 </head>
-<body>
-  <div class="about-container">
-    <div class="about-title">About Me</div>
-    <div class="about-desc">
-      Hi! I'm Sanjeevan, a passionate web developer.<br>
-      Connect with me on social media:
-    </div>
-    <!-- Custom App Details Section -->
-    <div class="app-details" style="margin-bottom: 1.5rem; color: #444;">
-      <strong>My Custom App:</strong><br>
-      <span>App Name: <b>MyProfile Connect</b></span><br>
-      <span>Version: 1.0.0</span><br>
-      <span>Description: This app links your social profiles and showcases your portfolio with interactive animations.</span>
+<body class="h-full bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <div class="w-64 bg-gray-50 dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 overflow-y-auto">
+            <div class="p-4 border-b border-gray-200 dark:border-gray-700">
+                <h1 class="text-xl font-bold text-primary">All Tools</h1>
+                <p class="text-sm text-gray-600 dark:text-gray-400">Universal Utility Hub</p>
+            </div>
+            
+            <nav class="p-4 space-y-2">
+                <div class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2">Text Tools</div>
+                <button class="nav-item w-full text-left px-3 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" data-tool="text-utils">
+                    📝 Text Utilities
+                </button>
+                <button class="nav-item w-full text-left px-3 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" data-tool="json-formatter">
+                    🔧 JSON Formatter
+                </button>
+                <button class="nav-item w-full text-left px-3 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" data-tool="base64">
+                    🔐 Base64 Encoder
+                </button>
+                
+                <div class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2 mt-4">Calculators</div>
+                <button class="nav-item w-full text-left px-3 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" data-tool="calculator">
+                    🧮 Calculator
+                </button>
+                <button class="nav-item w-full text-left px-3 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" data-tool="unit-converter">
+                    📏 Unit Converter
+                </button>
+                
+                <div class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2 mt-4">Generators</div>
+                <button class="nav-item w-full text-left px-3 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" data-tool="password-gen">
+                    🔑 Password Generator
+                </button>
+                <button class="nav-item w-full text-left px-3 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" data-tool="qr-generator">
+                    📱 QR Code Generator
+                </button>
+                <button class="nav-item w-full text-left px-3 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" data-tool="hash-generator">
+                    #️⃣ Hash Generator
+                </button>
+                
+                <div class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2 mt-4">Color Tools</div>
+                <button class="nav-item w-full text-left px-3 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" data-tool="color-picker">
+                    🎨 Color Picker
+                </button>
+                
+                <div class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2 mt-4">AI Tools</div>
+                <button class="nav-item w-full text-left px-3 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" data-tool="ai-chat">
+                    🤖 AI Assistant
+                </button>
+                <button class="nav-item w-full text-left px-3 py-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" data-tool="image-generator">
+                    🖼️ Image Generator
+                </button>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 overflow-y-auto">
+            <div class="p-6">
+                <!-- Welcome Section -->
+                <div id="welcome" class="tool-section active">
+                    <div class="text-center py-12">
+                        <h2 class="text-3xl font-bold mb-4">Welcome to All Tools</h2>
+                        <p class="text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
+                            Your comprehensive utility hub with text tools, calculators, generators, and AI-powered features. 
+                            Select a tool from the sidebar to get started.
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                            <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
+                                <div class="text-2xl mb-2">📝</div>
+                                <h3 class="font-semibold mb-2">Text Tools</h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">Word count, case conversion, JSON formatting, and encoding tools</p>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
+                                <div class="text-2xl mb-2">🧮</div>
+                                <h3 class="font-semibold mb-2">Calculators</h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">Basic calculator and unit conversion tools</p>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
+                                <div class="text-2xl mb-2">🔑</div>
+                                <h3 class="font-semibold mb-2">Generators</h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">Password, QR code, and hash generators</p>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
+                                <div class="text-2xl mb-2">🎨</div>
+                                <h3 class="font-semibold mb-2">Color Tools</h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">Color picker and palette tools</p>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
+                                <div class="text-2xl mb-2">🤖</div>
+                                <h3 class="font-semibold mb-2">AI Tools</h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">AI-powered text generation and image creation</p>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
+                                <div class="text-2xl mb-2">⚡</div>
+                                <h3 class="font-semibold mb-2">More Coming</h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">Additional tools and features in development</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text Utilities -->
+                <div id="text-utils" class="tool-section">
+                    <h2 class="text-2xl font-bold mb-6">Text Utilities</h2>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div class="space-y-4">
+                            <label class="block text-sm font-medium">Input Text</label>
+                            <textarea id="textInput" class="w-full h-40 p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-base" placeholder="Enter your text here..."></textarea>
+                            <div class="flex flex-wrap gap-2">
+                                <button onclick="convertCase('upper')" class="px-4 py-2 bg-primary text-white rounded hover:bg-primaryHover">UPPERCASE</button>
+                                <button onclick="convertCase('lower')" class="px-4 py-2 bg-primary text-white rounded hover:bg-primaryHover">lowercase</button>
+                                <button onclick="convertCase('title')" class="px-4 py-2 bg-primary text-white rounded hover:bg-primaryHover">Title Case</button>
+                                <button onclick="reverseText()" class="px-4 py-2 bg-primary text-white rounded hover:bg-primaryHover">Reverse</button>
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <label class="block text-sm font-medium">Statistics</label>
+                            <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg space-y-2">
+                                <div class="flex justify-between">
+                                    <span>Characters:</span>
+                                    <span id="charCount">0</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Words:</span>
+                                    <span id="wordCount">0</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Lines:</span>
+                                    <span id="lineCount">0</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Paragraphs:</span>
+                                    <span id="paragraphCount">0</span>
+                                </div>
+                            </div>
+                            <label class="block text-sm font-medium">Result</label>
+                            <textarea id="textOutput" class="w-full h-32 p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 text-base" readonly></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- JSON Formatter -->
+                <div id="json-formatter" class="tool-section">
+                    <h2 class="text-2xl font-bold mb-6">JSON Formatter</h2>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div class="space-y-4">
+                            <label class="block text-sm font-medium">Input JSON</label>
+                            <textarea id="jsonInput" class="w-full h-64 p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 font-mono text-base" placeholder='{"example": "json"}'></textarea>
+                            <div class="flex gap-2">
+                                <button onclick="formatJSON()" class="px-4 py-2 bg-primary text-white rounded hover:bg-primaryHover">Format</button>
+                                <button onclick="minifyJSON()" class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600">Minify</button>
+                                <button onclick="validateJSON()" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">Validate</button>
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <label class="block text-sm font-medium">Output</label>
+                            <textarea id="jsonOutput" class="w-full h-64 p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 font-mono text-base" readonly></textarea>
+                            <div id="jsonStatus" class="text-sm"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Base64 Encoder -->
+                <div id="base64" class="tool-section">
+                    <h2 class="text-2xl font-bold mb-6">Base64 Encoder/Decoder</h2>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div class="space-y-4">
+                            <label class="block text-sm font-medium">Input</label>
+                            <textarea id="base64Input" class="w-full h-32 p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-base" placeholder="Enter text to encode/decode..."></textarea>
+                            <div class="flex gap-2">
+                                <button onclick="encodeBase64()" class="px-4 py-2 bg-primary text-white rounded hover:bg-primaryHover">Encode</button>
+                                <button onclick="decodeBase64()" class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600">Decode</button>
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <label class="block text-sm font-medium">Output</label>
+                            <textarea id="base64Output" class="w-full h-32 p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 text-base" readonly></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Calculator -->
+                <div id="calculator" class="tool-section">
+                    <h2 class="text-2xl font-bold mb-6">Calculator</h2>
+                    <div class="max-w-md mx-auto">
+                        <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
+                            <input type="text" id="calcDisplay" class="w-full h-16 text-right text-2xl font-mono p-4 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-900 mb-4" readonly>
+                            <div class="grid grid-cols-4 gap-2">
+                                <button onclick="clearCalc()" class="col-span-2 h-12 bg-red-500 text-white rounded hover:bg-red-600">Clear</button>
+                                <button onclick="deleteLast()" class="h-12 bg-gray-500 text-white rounded hover:bg-gray-600">⌫</button>
+                                <button onclick="appendToCalc('/')" class="h-12 bg-primary text-white rounded hover:bg-primaryHover">÷</button>
+                                <button onclick="appendToCalc('7')" class="h-12 bg-gray-200 dark:bg-gray-700 rounded hover:bg-gray-300 dark:hover:bg-gray-600">7</button>
+                                <button onclick="appendToCalc('8')" class="h-12 bg-gray-200 dark:bg-gray-700 rounded hover:bg-gray-300 dark:hover:bg-gray-600">8</button>
+                                <button onclick="appendToCalc('9')" class="h-12 bg-gray-200 dark:bg-gray-700 rounded hover:bg-gray-300 dark:hover:bg-gray-600">9</button>
+                                <button onclick="appendToCalc('*')" class="h-12 bg-primary text-white rounded hover:bg-primaryHover">×</button>
+                                <button onclick="appendToCalc('4')" class="h-12 bg-gray-200 dark:bg-gray-700 rounded hover:bg-gray-300 dark:hover:bg-gray-600">4</button>
+                                <button onclick="appendToCalc('5')" class="h-12 bg-gray-200 dark:bg-gray-700 rounded hover:bg-gray-300 dark:hover:bg-gray-600">5</button>
+                                <button onclick="appendToCalc('6')" class="h-12 bg-gray-200 dark:bg-gray-700 rounded hover:bg-gray-300 dark:hover:bg-gray-600">6</button>
+                                <button onclick="appendToCalc('-')" class="h-12 bg-primary text-white rounded hover:bg-primaryHover">−</button>
+                                <button onclick="appendToCalc('1')" class="h-12 bg-gray-200 dark:bg-gray-700 rounded hover:bg-gray-300 dark:hover:bg-gray-600">1</button>
+                                <button onclick="appendToCalc('2')" class="h-12 bg-gray-200 dark:bg-gray-700 rounded hover:bg-gray-300 dark:hover:bg-gray-600">2</button>
+                                <button onclick="appendToCalc('3')" class="h-12 bg-gray-200 dark:bg-gray-700 rounded hover:bg-gray-300 dark:hover:bg-gray-600">3</button>
+                                <button onclick="appendToCalc('+')" class="h-12 bg-primary text-white rounded hover:bg-primaryHover">+</button>
+                                <button onclick="appendToCalc('0')" class="col-span-2 h-12 bg-gray-200 dark:bg-gray-700 rounded hover:bg-gray-300 dark:hover:bg-gray-600">0</button>
+                                <button onclick="appendToCalc('.')" class="h-12 bg-gray-200 dark:bg-gray-700 rounded hover:bg-gray-300 dark:hover:bg-gray-600">.</button>
+                                <button onclick="calculateResult()" class="h-12 bg-green-500 text-white rounded hover:bg-green-600">=</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Unit Converter -->
+                <div id="unit-converter" class="tool-section">
+                    <h2 class="text-2xl font-bold mb-6">Unit Converter</h2>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div class="space-y-4">
+                            <label class="block text-sm font-medium">Category</label>
+                            <select id="unitCategory" onchange="updateUnitOptions()" class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-base">
+                                <option value="length">Length</option>
+                                <option value="weight">Weight</option>
+                                <option value="temperature">Temperature</option>
+                                <option value="area">Area</option>
+                                <option value="volume">Volume</option>
+                            </select>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium mb-2">From</label>
+                                    <select id="fromUnit" class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-base"></select>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-2">To</label>
+                                    <select id="toUnit" class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-base"></select>
+                                </div>
+                            </div>
+                            <input type="number" id="unitInput" oninput="convertUnits()" class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-base" placeholder="Enter value...">
+                        </div>
+                        <div class="space-y-4">
+                            <label class="block text-sm font-medium">Result</label>
+                            <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg text-center">
+                                <div id="conversionResult" class="text-2xl font-bold text-primary">0</div>
+                                <div id="conversionUnits" class="text-gray-600 dark:text-gray-400 mt-2"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Password Generator -->
+                <div id="password-gen" class="tool-section">
+                    <h2 class="text-2xl font-bold mb-6">Password Generator</h2>
+                    <div class="max-w-2xl mx-auto space-y-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Length</label>
+                                <input type="range" id="passwordLength" min="4" max="128" value="16" oninput="updatePasswordLength()" class="w-full">
+                                <div class="text-center text-sm text-gray-600 dark:text-gray-400">
+                                    <span id="passwordLengthValue">16</span> characters
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <label class="flex items-center space-x-2">
+                                <input type="checkbox" id="includeUppercase" checked class="rounded">
+                                <span>Uppercase (A-Z)</span>
+                            </label>
+                            <label class="flex items-center space-x-2">
+                                <input type="checkbox" id="includeLowercase" checked class="rounded">
+                                <span>Lowercase (a-z)</span>
+                            </label>
+                            <label class="flex items-center space-x-2">
+                                <input type="checkbox" id="includeNumbers" checked class="rounded">
+                                <span>Numbers (0-9)</span>
+                            </label>
+                            <label class="flex items-center space-x-2">
+                                <input type="checkbox" id="includeSymbols" class="rounded">
+                                <span>Symbols (!@#$%^&*)</span>
+                            </label>
+                        </div>
+                        <button onclick="generatePassword()" class="w-full py-3 bg-primary text-white rounded-lg hover:bg-primaryHover">Generate Password</button>
+                        <div class="space-y-2">
+                            <label class="block text-sm font-medium">Generated Password</label>
+                            <div class="flex">
+                                <input type="text" id="generatedPassword" class="flex-1 p-3 border border-gray-300 dark:border-gray-600 rounded-l-lg bg-gray-50 dark:bg-gray-700 font-mono text-base" readonly>
+                                <button onclick="copyPassword()" class="px-4 py-3 bg-gray-500 text-white rounded-r-lg hover:bg-gray-600">Copy</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- QR Generator -->
+                <div id="qr-generator" class="tool-section">
+                    <h2 class="text-2xl font-bold mb-6">QR Code Generator</h2>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div class="space-y-4">
+                            <label class="block text-sm font-medium">Text or URL</label>
+                            <textarea id="qrInput" class="w-full h-32 p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-base" placeholder="Enter text or URL to generate QR code..."></textarea>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium mb-2">Size</label>
+                                    <select id="qrSize" class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-base">
+                                        <option value="200">Small (200x200)</option>
+                                        <option value="300" selected>Medium (300x300)</option>
+                                        <option value="400">Large (400x400)</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-2">Error Correction</label>
+                                    <select id="qrErrorCorrection" class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-base">
+                                        <option value="L">Low</option>
+                                        <option value="M" selected>Medium</option>
+                                        <option value="Q">Quartile</option>
+                                        <option value="H">High</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button onclick="generateQR()" class="w-full py-3 bg-primary text-white rounded-lg hover:bg-primaryHover">Generate QR Code</button>
+                        </div>
+                        <div class="space-y-4">
+                            <label class="block text-sm font-medium">QR Code</label>
+                            <div id="qrOutput" class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg text-center min-h-64 flex items-center justify-center">
+                                <span class="text-gray-500 dark:text-gray-400">QR code will appear here</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hash Generator -->
+                <div id="hash-generator" class="tool-section">
+                    <h2 class="text-2xl font-bold mb-6">Hash Generator</h2>
+                    <div class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Input Text</label>
+                            <textarea id="hashInput" class="w-full h-32 p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-base" placeholder="Enter text to hash..."></textarea>
+                        </div>
+                        <button onclick="generateHashes()" class="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primaryHover">Generate Hashes</button>
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-sm font-medium mb-2">MD5</label>
+                                    <input type="text" id="md5Hash" class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 font-mono text-base" readonly>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-2">SHA-1</label>
+                                    <input type="text" id="sha1Hash" class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 font-mono text-base" readonly>
+                                </div>
+                            </div>
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-sm font-medium mb-2">SHA-256</label>
+                                    <input type="text" id="sha256Hash" class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 font-mono text-base" readonly>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-2">SHA-512</label>
+                                    <input type="text" id="sha512Hash" class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 font-mono text-base" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Color Picker -->
+                <div id="color-picker" class="tool-section">
+                    <h2 class="text-2xl font-bold mb-6">Color Picker</h2>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div class="space-y-4">
+                            <label class="block text-sm font-medium">Color Picker</label>
+                            <input type="color" id="colorInput" value="#5D5CDE" onchange="updateColorValues()" class="w-full h-20 border border-gray-300 dark:border-gray-600 rounded-lg">
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium mb-2">Hex</label>
+                                    <input type="text" id="hexValue" class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 font-mono text-base" onchange="updateFromHex()">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-2">RGB</label>
+                                    <input type="text" id="rgbValue" class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 font-mono text-base" readonly>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium mb-2">HSL</label>
+                                    <input type="text" id="hslValue" class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 font-mono text-base" readonly>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-2">HSV</label>
+                                    <input type="text" id="hsvValue" class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 font-mono text-base" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <label class="block text-sm font-medium">Color Preview</label>
+                            <div id="colorPreview" class="w-full h-40 border border-gray-300 dark:border-gray-600 rounded-lg" style="background-color: #5D5CDE;"></div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Color Palette</label>
+                                <div id="colorPalette" class="grid grid-cols-5 gap-2"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Chat -->
+                <div id="ai-chat" class="tool-section">
+                    <h2 class="text-2xl font-bold mb-6">AI Assistant</h2>
+                    <div class="max-w-4xl mx-auto">
+                        <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 h-96 overflow-y-auto mb-4" id="chatMessages">
+                            <div class="text-center text-gray-500 dark:text-gray-400">
+                                Start a conversation with the AI assistant. Ask questions, get help with tasks, or have a general discussion.
+                            </div>
+                        </div>
+                        <div class="flex gap-2">
+                            <input type="text" id="chatInput" class="flex-1 p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-base" placeholder="Ask me anything..." onkeypress="if(event.key==='Enter') sendMessage()">
+                            <button onclick="sendMessage()" id="sendButton" class="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primaryHover">Send</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Image Generator -->
+                <div id="image-generator" class="tool-section">
+                    <h2 class="text-2xl font-bold mb-6">AI Image Generator</h2>
+                    <div class="max-w-4xl mx-auto">
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                            <div class="space-y-4">
+                                <label class="block text-sm font-medium">Image Description</label>
+                                <textarea id="imagePrompt" class="w-full h-32 p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-base" placeholder="Describe the image you want to generate..."></textarea>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-sm font-medium mb-2">Aspect Ratio</label>
+                                        <select id="aspectRatio" class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-base">
+                                            <option value="1:1">Square (1:1)</option>
+                                            <option value="4:3">Landscape (4:3)</option>
+                                            <option value="3:2">Photo (3:2)</option>
+                                            <option value="16:9">Widescreen (16:9)</option>
+                                            <option value="2:3">Portrait (2:3)</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium mb-2">Quality</label>
+                                        <select id="imageQuality" class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-base">
+                                            <option value="low">Low</option>
+                                            <option value="medium">Medium</option>
+                                            <option value="high" selected>High</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <button onclick="generateImage()" id="generateImageBtn" class="w-full py-3 bg-primary text-white rounded-lg hover:bg-primaryHover">Generate Image</button>
+                            </div>
+                            <div class="space-y-4">
+                                <label class="block text-sm font-medium">Generated Image</label>
+                                <div id="imageOutput" class="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 text-center min-h-64 flex items-center justify-center">
+                                    <span class="text-gray-500 dark:text-gray-400">Generated image will appear here</span>
+                                </div>
+                                <div id="imageContainer" class="hidden">
+                                    <img id="generatedImage" class="w-full rounded-lg" alt="Generated image">
+                                    <div class="mt-2 text-center">
+                                        <a id="downloadImage" class="inline-block px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600" download="generated-image.png">Download Image</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- App Features Tab -->
-    <div class="features-tab">
-      <button class="features-toggle">App Features &#9662;</button>
-      <div class="features-content">
-        <ul>
-          <li>Animated social profile links</li>
-          <li>Responsive and modern design</li>
-          <li>Ripple click effect on icons</li>
-          <li>Easy customization</li>
-          <li>Fast and lightweight</li>
-        </ul>
-      </div>
-    </div>
+    <script>
+        // Dark mode support
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
 
-    <div class="social-links">
-      <a class="social-link insta" href="https://instagram.com/@sanjeevan_official_74" target="_blank" title="Instagram">
-        <i class="fab fa-instagram"></i>
-      </a>
-      <a class="social-link fb" href="https://facebook.com/yourprofile" target="_blank" title="Facebook">
-        <i class="fab fa-facebook-f"></i>
-      </a>
-      <a class="social-link linkedin" href="https://linkedin.com/in/yourprofile" target="_blank" title="LinkedIn">
-        <i class="fab fa-linkedin-in"></i>
-      </a>
-    </div>
-  </div>
-  <script>
-    // Optional: Add a little JS for a ripple effect on click
-    document.querySelectorAll('.social-link').forEach(link => {
-      link.addEventListener('click', function(e) {
-        let ripple = document.createElement('span');
-        ripple.className = 'ripple';
-        ripple.style.left = e.offsetX + 'px';
-        ripple.style.top = e.offsetY + 'px';
-        this.appendChild(ripple);
-        setTimeout(() => ripple.remove(), 600);
-      });
-    });
+        // Navigation
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const tool = item.dataset.tool;
+                showTool(tool);
+                
+                // Update active nav item
+                document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+                item.classList.add('active');
+            });
+        });
 
-    // Features tab toggle
-    document.querySelector('.features-toggle').addEventListener('click', function() {
-      this.parentElement.classList.toggle('active');
-      this.innerHTML = this.parentElement.classList.contains('active')
-        ? 'App Features &#9652;'
-        : 'App Features &#9662;';
-    });
-  </script>
+        function showTool(toolId) {
+            document.querySelectorAll('.tool-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            if (toolId === 'welcome' || !toolId) {
+                document.getElementById('welcome').classList.add('active');
+            } else {
+                document.getElementById(toolId).classList.add('active');
+            }
+        }
+
+        // Text Utilities
+        const textInput = document.getElementById('textInput');
+        const textOutput = document.getElementById('textOutput');
+
+        textInput.addEventListener('input', updateTextStats);
+
+        function updateTextStats() {
+            const text = textInput.value;
+            document.getElementById('charCount').textContent = text.length;
+            document.getElementById('wordCount').textContent = text.trim() ? text.trim().split(/\s+/).length : 0;
+            document.getElementById('lineCount').textContent = text.split('\n').length;
+            document.getElementById('paragraphCount').textContent = text.trim() ? text.split(/\n\s*\n/).length : 0;
+        }
+
+        function convertCase(type) {
+            const text = textInput.value;
+            let result;
+            switch(type) {
+                case 'upper':
+                    result = text.toUpperCase();
+                    break;
+                case 'lower':
+                    result = text.toLowerCase();
+                    break;
+                case 'title':
+                    result = text.replace(/\w\S*/g, (txt) => 
+                        txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
+                    break;
+            }
+            textOutput.value = result;
+        }
+
+        function reverseText() {
+            textOutput.value = textInput.value.split('').reverse().join('');
+        }
+
+        // JSON Formatter
+        function formatJSON() {
+            try {
+                const input = document.getElementById('jsonInput').value;
+                const parsed = JSON.parse(input);
+                document.getElementById('jsonOutput').value = JSON.stringify(parsed, null, 2);
+                document.getElementById('jsonStatus').innerHTML = '<span class="text-green-500">✓ Valid JSON</span>';
+            } catch (e) {
+                document.getElementById('jsonStatus').innerHTML = '<span class="text-red-500">✗ Invalid JSON: ' + e.message + '</span>';
+            }
+        }
+
+        function minifyJSON() {
+            try {
+                const input = document.getElementById('jsonInput').value;
+                const parsed = JSON.parse(input);
+                document.getElementById('jsonOutput').value = JSON.stringify(parsed);
+                document.getElementById('jsonStatus').innerHTML = '<span class="text-green-500">✓ Valid JSON (minified)</span>';
+            } catch (e) {
+                document.getElementById('jsonStatus').innerHTML = '<span class="text-red-500">✗ Invalid JSON: ' + e.message + '</span>';
+            }
+        }
+
+        function validateJSON() {
+            try {
+                const input = document.getElementById('jsonInput').value;
+                JSON.parse(input);
+                document.getElementById('jsonStatus').innerHTML = '<span class="text-green-500">✓ Valid JSON</span>';
+            } catch (e) {
+                document.getElementById('jsonStatus').innerHTML = '<span class="text-red-500">✗ Invalid JSON: ' + e.message + '</span>';
+            }
+        }
+
+        // Base64 Encoder/Decoder
+        function encodeBase64() {
+            const input = document.getElementById('base64Input').value;
+            try {
+                const encoded = btoa(unescape(encodeURIComponent(input)));
+                document.getElementById('base64Output').value = encoded;
+            } catch (e) {
+                document.getElementById('base64Output').value = 'Error encoding: ' + e.message;
+            }
+        }
+
+        function decodeBase64() {
+            const input = document.getElementById('base64Input').value;
+            try {
+                const decoded = decodeURIComponent(escape(atob(input)));
+                document.getElementById('base64Output').value = decoded;
+            } catch (e) {
+                document.getElementById('base64Output').value = 'Error decoding: ' + e.message;
+            }
+        }
+
+        // Calculator
+        let calcExpression = '';
+        const calcDisplay = document.getElementById('calcDisplay');
+
+        function appendToCalc(value) {
+            if (value === '*') value = '×';
+            if (value === '/') value = '÷';
+            if (value === '-') value = '−';
+            calcExpression += value === '×' ? '*' : value === '÷' ? '/' : value === '−' ? '-' : value;
+            calcDisplay.value = calcExpression.replace(/\*/g, '×').replace(/\//g, '÷').replace(/\-/g, '−');
+        }
+
+        function clearCalc() {
+            calcExpression = '';
+            calcDisplay.value = '';
+        }
+
+        function deleteLast() {
+            calcExpression = calcExpression.slice(0, -1);
+            calcDisplay.value = calcExpression.replace(/\*/g, '×').replace(/\//g, '÷').replace(/\-/g, '−');
+        }
+
+        function calculateResult() {
+            try {
+                const result = eval(calcExpression);
+                calcDisplay.value = result;
+                calcExpression = result.toString();
+            } catch (e) {
+                calcDisplay.value = 'Error';
+                calcExpression = '';
+            }
+        }
+
+        // Unit Converter
+        const unitConversions = {
+            length: {
+                meter: 1,
+                kilometer: 0.001,
+                centimeter: 100,
+                millimeter: 1000,
+                inch: 39.3701,
+                foot: 3.28084,
+                yard: 1.09361,
+                mile: 0.000621371
+            },
+            weight: {
+                kilogram: 1,
+                gram: 1000,
+                pound: 2.20462,
+                ounce: 35.274,
+                stone: 0.157473,
+                ton: 0.001
+            },
+            temperature: {
+                celsius: { name: 'Celsius', convert: (c, to) => {
+                    if (to === 'fahrenheit') return c * 9/5 + 32;
+                    if (to === 'kelvin') return c + 273.15;
+                    return c;
+                }},
+                fahrenheit: { name: 'Fahrenheit', convert: (f, to) => {
+                    const c = (f - 32) * 5/9;
+                    if (to === 'celsius') return c;
+                    if (to === 'kelvin') return c + 273.15;
+                    return f;
+                }},
+                kelvin: { name: 'Kelvin', convert: (k, to) => {
+                    const c = k - 273.15;
+                    if (to === 'celsius') return c;
+                    if (to === 'fahrenheit') return c * 9/5 + 32;
+                    return k;
+                }}
+            }
+        };
+
+        function updateUnitOptions() {
+            const category = document.getElementById('unitCategory').value;
+            const fromUnit = document.getElementById('fromUnit');
+            const toUnit = document.getElementById('toUnit');
+            
+            fromUnit.innerHTML = '';
+            toUnit.innerHTML = '';
+            
+            const units = Object.keys(unitConversions[category]);
+            units.forEach(unit => {
+                fromUnit.innerHTML += `<option value="${unit}">${unit.charAt(0).toUpperCase() + unit.slice(1)}</option>`;
+                toUnit.innerHTML += `<option value="${unit}">${unit.charAt(0).toUpperCase() + unit.slice(1)}</option>`;
+            });
+            
+            if (units.length > 1) {
+                toUnit.selectedIndex = 1;
+            }
+            
+            convertUnits();
+        }
+
+        function convertUnits() {
+            const category = document.getElementById('unitCategory').value;
+            const fromUnit = document.getElementById('fromUnit').value;
+            const toUnit = document.getElementById('toUnit').value;
+            const value = parseFloat(document.getElementById('unitInput').value) || 0;
+            
+            let result;
+            if (category === 'temperature') {
+                result = unitConversions[category][fromUnit].convert(value, toUnit);
+            } else {
+                const fromFactor = unitConversions[category][fromUnit];
+                const toFactor = unitConversions[category][toUnit];
+                result = (value / fromFactor) * toFactor;
+            }
+            
+            document.getElementById('conversionResult').textContent = result.toFixed(6).replace(/\.?0+$/, '');
+            document.getElementById('conversionUnits').textContent = toUnit.charAt(0).toUpperCase() + toUnit.slice(1);
+        }
+
+        // Initialize unit converter
+        updateUnitOptions();
+
+        // Password Generator
+        function updatePasswordLength() {
+            const length = document.getElementById('passwordLength').value;
+            document.getElementById('passwordLengthValue').textContent = length;
+        }
+
+        function generatePassword() {
+            const length = parseInt(document.getElementById('passwordLength').value);
+            const includeUppercase = document.getElementById('includeUppercase').checked;
+            const includeLowercase = document.getElementById('includeLowercase').checked;
+            const includeNumbers = document.getElementById('includeNumbers').checked;
+            const includeSymbols = document.getElementById('includeSymbols').checked;
+            
+            let charset = '';
+            if (includeUppercase) charset += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            if (includeLowercase) charset += 'abcdefghijklmnopqrstuvwxyz';
+            if (includeNumbers) charset += '0123456789';
+            if (includeSymbols) charset += '!@#$%^&*()_+-=[]{}|;:,.<>?';
+            
+            if (!charset) {
+                document.getElementById('generatedPassword').value = 'Please select at least one character type';
+                return;
+            }
+            
+            let password = '';
+            for (let i = 0; i < length; i++) {
+                password += charset.charAt(Math.floor(Math.random() * charset.length));
+            }
+            
+            document.getElementById('generatedPassword').value = password;
+        }
+
+        function copyPassword() {
+            const password = document.getElementById('generatedPassword').value;
+            if (password && navigator.clipboard) {
+                navigator.clipboard.writeText(password).then(() => {
+                    const button = event.target;
+                    const originalText = button.textContent;
+                    button.textContent = 'Copied!';
+                    setTimeout(() => {
+                        button.textContent = originalText;
+                    }, 2000);
+                });
+            }
+        }
+
+        // QR Code Generator
+        function generateQR() {
+            const text = document.getElementById('qrInput').value.trim();
+            if (!text) return;
+            
+            const size = parseInt(document.getElementById('qrSize').value);
+            const errorCorrection = document.getElementById('qrErrorCorrection').value;
+            const output = document.getElementById('qrOutput');
+            
+            output.innerHTML = '';
+            
+            QRCode.toCanvas(text, {
+                width: size,
+                height: size,
+                errorCorrectionLevel: errorCorrection
+            }, (error, canvas) => {
+                if (error) {
+                    output.innerHTML = '<span class="text-red-500">Error generating QR code</span>';
+                } else {
+                    canvas.style.maxWidth = '100%';
+                    canvas.style.height = 'auto';
+                    output.appendChild(canvas);
+                }
+            });
+        }
+
+        // Hash Generator
+        function generateHashes() {
+            const input = document.getElementById('hashInput').value;
+            if (!input) return;
+            
+            document.getElementById('md5Hash').value = CryptoJS.MD5(input).toString();
+            document.getElementById('sha1Hash').value = CryptoJS.SHA1(input).toString();
+            document.getElementById('sha256Hash').value = CryptoJS.SHA256(input).toString();
+            document.getElementById('sha512Hash').value = CryptoJS.SHA512(input).toString();
+        }
+
+        // Color Picker
+        function updateColorValues() {
+            const color = document.getElementById('colorInput').value;
+            const hex = color.toUpperCase();
+            
+            // Convert hex to RGB
+            const r = parseInt(hex.slice(1, 3), 16);
+            const g = parseInt(hex.slice(3, 5), 16);
+            const b = parseInt(hex.slice(5, 7), 16);
+            
+            // Convert RGB to HSL
+            const hsl = rgbToHsl(r, g, b);
+            
+            // Convert RGB to HSV
+            const hsv = rgbToHsv(r, g, b);
+            
+            document.getElementById('hexValue').value = hex;
+            document.getElementById('rgbValue').value = `rgb(${r}, ${g}, ${b})`;
+            document.getElementById('hslValue').value = `hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`;
+            document.getElementById('hsvValue').value = `hsv(${hsv.h}, ${hsv.s}%, ${hsv.v}%)`;
+            document.getElementById('colorPreview').style.backgroundColor = hex;
+            
+            generateColorPalette(hex);
+        }
+
+        function updateFromHex() {
+            const hex = document.getElementById('hexValue').value;
+            if (/^#[0-9A-F]{6}$/i.test(hex)) {
+                document.getElementById('colorInput').value = hex;
+                updateColorValues();
+            }
+        }
+
+        function rgbToHsl(r, g, b) {
+            r /= 255;
+            g /= 255;
+            b /= 255;
+            const max = Math.max(r, g, b);
+            const min = Math.min(r, g, b);
+            let h, s, l = (max + min) / 2;
+
+            if (max === min) {
+                h = s = 0;
+            } else {
+                const d = max - min;
+                s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+                switch (max) {
+                    case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+                    case g: h = (b - r) / d + 2; break;
+                    case b: h = (r - g) / d + 4; break;
+                }
+                h /= 6;
+            }
+
+            return {
+                h: Math.round(h * 360),
+                s: Math.round(s * 100),
+                l: Math.round(l * 100)
+            };
+        }
+
+        function rgbToHsv(r, g, b) {
+            r /= 255;
+            g /= 255;
+            b /= 255;
+            const max = Math.max(r, g, b);
+            const min = Math.min(r, g, b);
+            let h, s, v = max;
+
+            const d = max - min;
+            s = max === 0 ? 0 : d / max;
+
+            if (max === min) {
+                h = 0;
+            } else {
+                switch (max) {
+                    case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+                    case g: h = (b - r) / d + 2; break;
+                    case b: h = (r - g) / d + 4; break;
+                }
+                h /= 6;
+            }
+
+            return {
+                h: Math.round(h * 360),
+                s: Math.round(s * 100),
+                v: Math.round(v * 100)
+            };
+        }
+
+        function generateColorPalette(baseColor) {
+            const palette = document.getElementById('colorPalette');
+            palette.innerHTML = '';
+            
+            // Generate 5 variations of the base color
+            const variations = [
+                adjustColor(baseColor, -40, 0, 0),  // Darker
+                adjustColor(baseColor, -20, 0, 0),  // Dark
+                baseColor,                          // Original
+                adjustColor(baseColor, 20, 0, 0),   // Light
+                adjustColor(baseColor, 40, 0, 0)    // Lighter
+            ];
+            
+            variations.forEach(color => {
+                const div = document.createElement('div');
+                div.className = 'w-full h-12 rounded cursor-pointer border border-gray-300 dark:border-gray-600';
+                div.style.backgroundColor = color;
+                div.title = color;
+                div.onclick = () => {
+                    document.getElementById('colorInput').value = color;
+                    updateColorValues();
+                };
+                palette.appendChild(div);
+            });
+        }
+
+        function adjustColor(color, lightness, saturation, hue) {
+            // Convert hex to HSL, adjust, and convert back
+            const r = parseInt(color.slice(1, 3), 16);
+            const g = parseInt(color.slice(3, 5), 16);
+            const b = parseInt(color.slice(5, 7), 16);
+            
+            let hsl = rgbToHsl(r, g, b);
+            hsl.h = Math.max(0, Math.min(360, hsl.h + hue));
+            hsl.s = Math.max(0, Math.min(100, hsl.s + saturation));
+            hsl.l = Math.max(0, Math.min(100, hsl.l + lightness));
+            
+            return hslToHex(hsl.h, hsl.s, hsl.l);
+        }
+
+        function hslToHex(h, s, l) {
+            l /= 100;
+            const a = s * Math.min(l, 1 - l) / 100;
+            const f = n => {
+                const k = (n + h / 30) % 12;
+                const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+                return Math.round(255 * color).toString(16).padStart(2, '0');
+            };
+            return `#${f(0)}${f(8)}${f(4)}`;
+        }
+
+        // Initialize color picker
+        updateColorValues();
+
+        // AI Chat
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            if (!message) return;
+            
+            const chatMessages = document.getElementById('chatMessages');
+            const sendButton = document.getElementById('sendButton');
+            
+            // Add user message
+            addChatMessage('user', message);
+            input.value = '';
+            sendButton.disabled = true;
+            sendButton.textContent = 'Sending...';
+            
+            // Register handler for AI response
+            if (window.Poe && window.Poe.registerHandler) {
+                window.Poe.registerHandler('chat-handler', (result) => {
+                    const msg = result.responses[0];
+                    if (msg.status === 'complete') {
+                        addChatMessage('assistant', msg.content);
+                        sendButton.disabled = false;
+                        sendButton.textContent = 'Send';
+                    } else if (msg.status === 'error') {
+                        addChatMessage('assistant', 'Sorry, I encountered an error: ' + msg.statusText);
+                        sendButton.disabled = false;
+                        sendButton.textContent = 'Send';
+                    }
+                });
+                
+                // Send message to Claude
+                window.Poe.sendUserMessage(`@Claude-Sonnet-4 ${message}`, {
+                    handler: 'chat-handler',
+                    stream: false,
+                    openChat: false
+                }).catch(err => {
+                    addChatMessage('assistant', 'Sorry, I couldn\'t process your message. Please try again.');
+                    sendButton.disabled = false;
+                    sendButton.textContent = 'Send';
+                });
+            } else {
+                addChatMessage('assistant', 'AI features are not available in this environment.');
+                sendButton.disabled = false;
+                sendButton.textContent = 'Send';
+            }
+        }
+
+        function addChatMessage(sender, content) {
+            const chatMessages = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `mb-4 ${sender === 'user' ? 'text-right' : 'text-left'}`;
+            
+            const bubble = document.createElement('div');
+            bubble.className = `inline-block max-w-[80%] p-3 rounded-lg ${
+                sender === 'user' 
+                    ? 'bg-primary text-white' 
+                    : 'bg-gray-200 dark:bg-gray-700'
+            }`;
+            bubble.textContent = content;
+            
+            messageDiv.appendChild(bubble);
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Image Generator
+        function generateImage() {
+            const prompt = document.getElementById('imagePrompt').value.trim();
+            if (!prompt) return;
+            
+            const aspectRatio = document.getElementById('aspectRatio').value;
+            const quality = document.getElementById('imageQuality').value;
+            const generateBtn = document.getElementById('generateImageBtn');
+            const imageOutput = document.getElementById('imageOutput');
+            const imageContainer = document.getElementById('imageContainer');
+            
+            generateBtn.disabled = true;
+            generateBtn.textContent = 'Generating...';
+            imageOutput.innerHTML = '<div class="text-center"><div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div><p class="mt-2">Generating image...</p></div>';
+            imageContainer.style.display = 'none';
+            
+            if (window.Poe && window.Poe.registerHandler) {
+                window.Poe.registerHandler('image-handler', (result) => {
+                    const msg = result.responses[0];
+                    
+                    if (msg.status === 'error') {
+                        imageOutput.innerHTML = '<span class="text-red-500">Error: ' + msg.statusText + '</span>';
+                        generateBtn.disabled = false;
+                        generateBtn.textContent = 'Generate Image';
+                    } else if (msg.status === 'complete') {
+                        if (msg.attachments && msg.attachments.length > 0) {
+                            const imageAttachment = msg.attachments[0];
+                            const generatedImage = document.getElementById('generatedImage');
+                            const downloadImage = document.getElementById('downloadImage');
+                            
+                            generatedImage.src = imageAttachment.url;
+                            downloadImage.href = imageAttachment.url;
+                            
+                            imageOutput.style.display = 'none';
+                            imageContainer.style.display = 'block';
+                        } else {
+                            imageOutput.innerHTML = '<span class="text-gray-500">No image was generated</span>';
+                        }
+                        generateBtn.disabled = false;
+                        generateBtn.textContent = 'Generate Image';
+                    }
+                });
+                
+                const fullPrompt = `${prompt} --aspect ${aspectRatio} --quality ${quality}`;
+                window.Poe.sendUserMessage(`@GPT-Image-1 ${fullPrompt}`, {
+                    handler: 'image-handler',
+                    stream: false,
+                    openChat: false
+                }).catch(err => {
+                    imageOutput.innerHTML = '<span class="text-red-500">Error: ' + err + '</span>';
+                    generateBtn.disabled = false;
+                    generateBtn.textContent = 'Generate Image';
+                });
+            } else {
+                imageOutput.innerHTML = '<span class="text-gray-500">Image generation is not available in this environment</span>';
+                generateBtn.disabled = false;
+                generateBtn.textContent = 'Generate Image';
+            }
+        }
+
+        // Initialize with welcome screen
+        showTool('welcome');
+    </script>
 </body>
-</html>
+                                          </html>
