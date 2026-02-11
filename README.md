@@ -1,4 +1,4 @@
-NEURAL NETWORKS AND DEEP LEARNING LAB MANUAL (CCS355)
+```NEURAL NETWORKS AND DEEP LEARNING LAB MANUAL (CCS355)
 
 LIST OF LAB EXPERIMENTS:
 1.	Implement simple vector addition in TensorFlow.
@@ -1114,3 +1114,4 @@ Output:
 
 Result:
 Thus the Program to Image generation using GANhas been executed successfully
+```
