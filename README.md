@@ -62,3 +62,16 @@ void loop() {
     delay(200);
   }
 }
+
+
+
+
+
+HC-SR04 Ultrasonic
+VCC	→	5V
+GND	→	GND
+TRIG	→	Pin 9
+ECHO	→	Pin 10
+Buzzer (Passive)
++ (long leg)	→	Pin 8
+− (short leg)	→	GND
